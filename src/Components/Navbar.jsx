@@ -29,8 +29,8 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     <div className='space-x-1'>
-                        <button className='btn btn-primary px-6'>Login</button>
-                        <button className='btn btn-primary px-6'>SignUp</button>
+                        <Link to='/auth/login' className='btn btn-primary px-6'>Login</Link>
+                        <Link to="/auth/signup" className='btn btn-primary px-6'>SignUp</Link>
                     </div>
                 </div>
             </div>
