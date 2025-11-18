@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const SkillCard = ({skilldata}) => {
     return (
@@ -14,9 +15,11 @@ const SkillCard = ({skilldata}) => {
                 <p className="text-sm font-semibold text-primary">💲 Price: {skilldata.price}</p>
                 <div className="card-actions justify-end mt-3">
 
+                    <Link to={`/skilldetails/${skilldata.skillId}`}>
                     <button className="btn btn-primary btn-sm">
                         View Details
                     </button>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ import AuthLayout from "../Layout/AuthLayout";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Home from "../pages/Home";
+import SkillDetails from "../pages/SkillDetails";
 
 export const router = createBrowserRouter([
     {
@@ -15,6 +16,11 @@ export const router = createBrowserRouter([
                 element:<Home></Home>
             }
         ]
+    },
+    {
+        path:"/skilldetails/:id",
+        element: <SkillDetails></SkillDetails>,
+        loader:()=> fetch("/skilldata.json")
     },
     {
         path:"auth",
