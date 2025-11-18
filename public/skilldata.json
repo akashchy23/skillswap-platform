@@ -1,0 +1,74 @@
+[
+  {
+    "skillId": 1,
+    "skillName": "Beginner Guitar Lessons",
+    "providerName": "Alex Martin",
+    "providerEmail": "alex@skillswap.com",
+    "price": 20,
+    "rating": 4.8,
+    "slotsAvailable": 3,
+    "description": "Acoustic guitar classes for complete beginners.",
+    "image": "https://i.ibb.co.com/1yb0DY7/guitar-lessons.jpg",
+    "category": "Music"
+  },
+  {
+    "skillId": 2,
+    "skillName": "Spoken English Practice",
+    "providerName": "Sara Hossain",
+    "providerEmail": "sara@skillswap.com",
+    "price": 10,
+    "rating": 4.6,
+    "slotsAvailable": 5,
+    "description": "Conversational English sessions for non-native speakers.",
+    "image": "https://i.ibb.co.com/dZvN1FZ/images.jpg",
+    "category": "Language"
+  },
+  {
+    "skillId": 3,
+    "skillName": "Basic Photoshop Editing",
+    "providerName": "Michael Lee",
+    "providerEmail": "michael@skillswap.com",
+    "price": 15,
+    "rating": 4.7,
+    "slotsAvailable": 4,
+    "description": "Learn photo retouching and basic graphic editing.",
+    "image": "https://i.ibb.co.com/R4TPmtgM/download-1.jpg",
+    "category": "Design"
+  },
+  {
+    "skillId": 4,
+    "skillName": "Beginner Coding with JavaScript",
+    "providerName": "Nina Rahman",
+    "providerEmail": "nina@skillswap.com",
+    "price": 25,
+    "rating": 4.9,
+    "slotsAvailable": 2,
+    "description": "Start your programming journey with JavaScript fundamentals.",
+    "image": "https://i.ibb.co.com/BHD0LMRj/js.png",
+    "category": "Programming"
+  },
+  {
+    "skillId": 5,
+    "skillName": "Photography Basics",
+    "providerName": "John Carter",
+    "providerEmail": "john@skillswap.com",
+    "price": 18,
+    "rating": 4.5,
+    "slotsAvailable": 3,
+    "description": "Learn how to shoot in manual mode and capture stunning photos.",
+    "image": "https://i.ibb.co.com/fdsghFnf/download-2.jpg",
+    "category": "Photography"
+  },
+  {
+    "skillId": 6,
+    "skillName": "Public Speaking Coaching",
+    "providerName": "Emily Davis",
+    "providerEmail": "emily@skillswap.com",
+    "price": 22,
+    "rating": 4.5,
+    "slotsAvailable": 4,
+    "description": "Improve confidence and communication with guided practice.",
+    "image": "https://i.ibb.co.com/3Y1NCPZD/download-3.jpg",
+    "category": "Personal Development"
+  }
+]

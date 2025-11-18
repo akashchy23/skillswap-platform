@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
+import { FaFacebook, FaInstagramSquare, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <div>
-            this is footer
-        </div>
+       <div>
+        akash
+       </div>
     );
 };
 
