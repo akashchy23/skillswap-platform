@@ -1,9 +1,10 @@
-import React, { use } from 'react';
+import React, { use, useRef } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Login = () => {
-    const { signIn } = use(AuthContext)
+    const emailRef =useRef(null)
+    const { signIn,forgetPassword } = use(AuthContext)
     const handleSignIn = (event) => {
         event.preventDefault()
         console.log("clicked")
@@ -20,6 +21,17 @@ const Login = () => {
          })
 
     }
+    const handleResetPassword=()=>{
+       const email = emailRef.current.value
+    //    console.log(email)
+    forgetPassword(email)
+     .then(()=>{
+        alert("Please cheak your email")
+     })
+     .catch(error=>{
+        alert(error.message)
+     })
+    }
     return (
         <div>
             <form onSubmit={handleSignIn} className='flex justify-center items-center'>
@@ -29,11 +41,13 @@ const Login = () => {
                         <fieldset className="fieldset">
                             {/* email */}
                             <label className="label">Email</label>
-                            <input name="email" type="email" className="input" placeholder="Email" required />
+                            <input ref={emailRef} name="email" type="email" className="input" placeholder="Email" required />
                             {/* password */}
                             <label className="label">Password</label>
                             <input name="password" type="password" className="input" placeholder="Password" required />
-                            <div><a className="link link-hover">Forgot password?</a></div>
+                            <div> 
+                                <button onClick={handleResetPassword} type='button' className='hover:underline cursor-pointer '>Forgot password?</button>
+                            </div>
 
                             <button className="btn btn-neutral mt-4">Login</button>
                             <p className='text-center font-semibold pt-5'>Dont’t Have An Account ? <Link className='text-secondary' to='/auth/signup'>SignUp</Link></p>
