@@ -5,6 +5,8 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Home from "../pages/Home";
 import SkillDetails from "../pages/SkillDetails";
+import MyProfile from "../pages/MyProfile";
+import PrivateRouter from "../provider/PrivateRouter";
 
 export const router = createBrowserRouter([
     {
@@ -14,12 +16,16 @@ export const router = createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>
+            },
+            {
+                path:"/profile",
+                element:<MyProfile></MyProfile>
             }
         ]
     },
     {
         path:"/skilldetails/:id",
-        element: <SkillDetails></SkillDetails>,
+        element: <PrivateRouter><SkillDetails></SkillDetails></PrivateRouter>,
         loader:()=> fetch("/skilldata.json")
     },
     {

@@ -26,7 +26,7 @@ const Navbar = () => {
                             tabIndex="-1"
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <Link className='font-bold' to='/'>Home</Link>
-                            <Link className='font-bold' to='profile'>Profile</Link>
+                            <Link className='font-bold' to='/profile'>Profile</Link>
                         </ul>
                     </div>
                     <div className='flex'>
@@ -37,7 +37,7 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <NavLink className='font-bold mr-2' to='/'>Home</NavLink>
-                        <NavLink className='font-bold' to='profile'>Profile</NavLink>
+                        <NavLink className='font-bold' to='/profile'>Profile</NavLink>
                         {/* <p>{user&&user.email}</p> */}
                     </ul>
                 </div>
