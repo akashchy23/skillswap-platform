@@ -7,7 +7,7 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
     console.log(location)
-    const { signIn,forgetPassword } = use(AuthContext)
+    const { signIn } = use(AuthContext)
     const handleSignIn = (event) => {
         event.preventDefault()
         console.log("clicked")
@@ -27,15 +27,11 @@ const Login = () => {
 
     }
     const handleResetPassword=()=>{
-       const email = emailRef.current.value
+          const email = emailRef.current.value
+       navigate(`/forget/${ email}`)
+     
     //    console.log(email)
-    forgetPassword(email)
-     .then(()=>{
-        alert("Please cheak your email")
-     })
-     .catch(error=>{
-        alert(error.message)
-     })
+    
     }
     return (
         <div>

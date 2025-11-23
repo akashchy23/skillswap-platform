@@ -1,24 +1,39 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 
 const SignUp = () => {
-     const {createUser}=use(AuthContext)
-
-    const handleSignup=(e)=>{
+    const { createUser } = use(AuthContext)
+    const navigate = useNavigate()
+    const handleSignup = (e) => {
         e.preventDefault()
         // console.log("clicked")
         const email = e.target.email.value;
         const password = e.target.password.value;
         // console.log(email,password)
-        createUser(email,password)
-         .then(result=>{
-            console.log(result.user)
-         })
-         .catch(error=>{
-            const errorMessage = error.message;
-            alert(errorMessage)
-         })
+        if (password.length < 6) {
+            alert('Password must be at least 6 characters long');
+            return;
+        }
+        if (!/[A-Z]/.test(password)) {
+            alert('Password must contain at least one uppercase letter');
+            return;
+        }
+        if (!/[a-z]/.test(password)) {
+            alert('Password must contain at least one lowercase letter');
+            return;
+        }
+
+
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user)
+                navigate('/');
+            })
+            .catch(error => {
+                const errorMessage = error.message;
+                alert(errorMessage)
+            })
 
     }
     return (
@@ -30,7 +45,7 @@ const SignUp = () => {
                         {/* Name */}
                         <label className="label">Name</label>
                         <input name='name' type="text" className="input" placeholder="Enter your name" required />
-                        
+
                         {/* Photo URL */}
                         <label className="label">Photo URL</label>
                         <input name='photourl' type="text" className="input" placeholder="Photo URL" required />

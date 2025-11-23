@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import SkillDetails from "../pages/SkillDetails";
 import MyProfile from "../pages/MyProfile";
 import PrivateRouter from "../provider/PrivateRouter";
+import ForgetPassword from "../pages/ForgetPassword";
 
 export const router = createBrowserRouter([
     {
@@ -41,5 +42,9 @@ export const router = createBrowserRouter([
                 element:<SignUp></SignUp>
             }
         ]
+    },
+    {
+        path:"/forget/:email",
+        element:<ForgetPassword></ForgetPassword>
     }
 ])
