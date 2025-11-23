@@ -2,8 +2,10 @@ import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import logo from '../assets/logo1.jpg'
 import { AuthContext } from '../provider/AuthProvider';
+import { PropagateLoader } from 'react-spinners';
+
 const Navbar = () => {
-    const { user, logOut } = use(AuthContext);
+    const { user, logOut,loading } = use(AuthContext);
     const handleSignOut = () => {
     //   console.log("clicked")
        logOut()
@@ -42,7 +44,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    {user ?
+                   { loading?<PropagateLoader className='h-6 w-6' /> : user ?
                         <button onClick={handleSignOut} className='btn btn-primary'>Logout</button>
                         :
                         <div className='space-x-1'>
