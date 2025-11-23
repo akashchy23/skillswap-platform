@@ -1,12 +1,15 @@
-import React, { use, useRef } from 'react';
+import React, { use, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
+import { FaEye } from 'react-icons/fa';
+import { IoMdEyeOff } from 'react-icons/io';
 
 const Login = () => {
     const emailRef =useRef(null)
     const navigate = useNavigate()
     const location = useLocation()
-    console.log(location)
+    const [showpass,setShowPass]=useState(false)
+    // console.log(location)
     const { signIn } = use(AuthContext)
     const handleSignIn = (event) => {
         event.preventDefault()
@@ -26,11 +29,13 @@ const Login = () => {
          })
 
     }
+
+    const handleToggle=()=>{
+        setShowPass(!showpass)
+    }
     const handleResetPassword=()=>{
           const email = emailRef.current.value
        navigate(`/forget/${ email}`)
-     
-    //    console.log(email)
     
     }
     return (
@@ -45,7 +50,11 @@ const Login = () => {
                             <input ref={emailRef} name="email" type="email" className="input" placeholder="Email" required />
                             {/* password */}
                             <label className="label">Password</label>
-                            <input name="password" type="password" className="input" placeholder="Password" required />
+                           <div className='relative'>
+                             <input name="password" type={showpass?"text":"password"} className="input" placeholder="Password" required />
+                             <button onClick={handleToggle} type='button' className='btn btn-xs absolute top-2 right-5'>{showpass?<IoMdEyeOff />:<FaEye />}</button>
+                           </div>
+
                             <div> 
                                 <button onClick={handleResetPassword} type='button' className='hover:underline cursor-pointer '>Forgot password?</button>
                             </div>

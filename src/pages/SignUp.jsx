@@ -1,10 +1,17 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
+import { FaEye } from 'react-icons/fa';
+import { IoMdEyeOff } from 'react-icons/io';
 
 const SignUp = () => {
     const { createUser } = use(AuthContext)
     const navigate = useNavigate()
+    const [showpass,setShowPass]=useState(false)
+    const handleToggle=()=>{
+        // console.log("toggle ")
+        setShowPass(!showpass)
+    }
     const handleSignup = (e) => {
         e.preventDefault()
         // console.log("clicked")
@@ -55,7 +62,11 @@ const SignUp = () => {
                         <input name='email' type="email" className="input" placeholder="Email" required />
                         {/* Password */}
                         <label className="label">Password</label>
-                        <input name='password' type="password" className="input" placeholder="Password" required />
+                        <div className='relative'>
+                            <input name='password' type={showpass?"text":"password"} className="input" placeholder="Password" required />
+                            <button type='button' onClick={handleToggle} className='btn btn-xs absolute right-5 top-2'>{showpass?<IoMdEyeOff />:<FaEye />}</button>
+                        </div>
+
                         <div><a className="link link-hover">Forgot password?</a></div>
                         <button type='submit' className="btn btn-neutral mt-4">SignUp</button>
                         <p className='text-center font-semibold pt-5'>Dont’t Have An Account ? <Link className='text-secondary' to='/auth/login'>Login</Link></p>
