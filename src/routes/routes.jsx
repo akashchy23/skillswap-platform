@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:"/profile",
-                element:<MyProfile></MyProfile>
+                element:<PrivateRouter><MyProfile></MyProfile></PrivateRouter>
             }
         ]
     },

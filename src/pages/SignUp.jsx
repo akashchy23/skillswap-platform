@@ -3,12 +3,13 @@ import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import { FaEye } from 'react-icons/fa';
 import { IoMdEyeOff } from 'react-icons/io';
+import { updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
-    const { createUser } = use(AuthContext)
+    const { createUser, setUser, updateUser } = use(AuthContext)
     const navigate = useNavigate()
-    const [showpass,setShowPass]=useState(false)
-    const handleToggle=()=>{
+    const [showpass, setShowPass] = useState(false)
+    const handleToggle = () => {
         // console.log("toggle ")
         setShowPass(!showpass)
     }
@@ -17,6 +18,8 @@ const SignUp = () => {
         // console.log("clicked")
         const email = e.target.email.value;
         const password = e.target.password.value;
+        const name = e.target.name.value;
+        const photourl = e.target.photourl.value;
         // console.log(email,password)
         if (password.length < 6) {
             alert('Password must be at least 6 characters long');
@@ -34,8 +37,20 @@ const SignUp = () => {
 
         createUser(email, password)
             .then(result => {
-                console.log(result.user)
-                navigate('/');
+                // console.log(result.user)
+                updateUser(
+                    {
+                        displayName: name,
+                        photoURL: photourl
+                    })
+                    .then(() => {
+                        setUser({ ...result.user, displayName: name, photoURL: photourl })
+                        navigate('/');
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+
             })
             .catch(error => {
                 const errorMessage = error.message;
@@ -63,8 +78,8 @@ const SignUp = () => {
                         {/* Password */}
                         <label className="label">Password</label>
                         <div className='relative'>
-                            <input name='password' type={showpass?"text":"password"} className="input" placeholder="Password" required />
-                            <button type='button' onClick={handleToggle} className='btn btn-xs absolute right-5 top-2'>{showpass?<IoMdEyeOff />:<FaEye />}</button>
+                            <input name='password' type={showpass ? "text" : "password"} className="input" placeholder="Password" required />
+                            <button type='button' onClick={handleToggle} className='btn btn-xs absolute right-5 top-2'>{showpass ? <IoMdEyeOff /> : <FaEye />}</button>
                         </div>
 
                         <div><a className="link link-hover">Forgot password?</a></div>

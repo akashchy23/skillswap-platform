@@ -18,14 +18,14 @@ const PopularSkill = () => {
             <h1 className='text-center text-5xl mb-3'>Popular Skill!!</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
-                    skilldata.map(data=> <SkillCard skilldata={data}></SkillCard>)
+                    skilldata.map(data=> <SkillCard key={data.skillId} skilldata={data}></SkillCard>)
                 }          
             </div>
             <div className='my-5'>
                 <h1  className='text-center text-5xl mt-12 mb-6'>Top Providers...</h1>
                <div  className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                  {
-                  topProvider.map(data=> <SkillCard skilldata={data}></SkillCard>)
+                  topProvider.map(data=> <SkillCard key={data.skillId} skilldata={data}></SkillCard>)
                 }
                </div>
             </div>
