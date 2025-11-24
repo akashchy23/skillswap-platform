@@ -1,17 +1,28 @@
 import React, { use, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
-import { FaEye } from 'react-icons/fa';
+import { FaEye, FaGoogle } from 'react-icons/fa';
 import { IoMdEyeOff } from 'react-icons/io';
-import { updateProfile } from 'firebase/auth';
+
 
 const SignUp = () => {
-    const { createUser, setUser, updateUser } = use(AuthContext)
+    const { createUser, setUser, updateUser, googleLogin } = use(AuthContext)
     const navigate = useNavigate()
     const [showpass, setShowPass] = useState(false)
     const handleToggle = () => {
         // console.log("toggle ")
         setShowPass(!showpass)
+    }
+    const handleGoogle = () => {
+        googleLogin()
+        .then(result=>{
+            const user = result.user;
+            setUser(user);
+            navigate('/');
+        })
+        .catch(error=>{
+            console.log(error)
+        })
     }
     const handleSignup = (e) => {
         e.preventDefault()
@@ -84,6 +95,13 @@ const SignUp = () => {
 
                         <div><a className="link link-hover">Forgot password?</a></div>
                         <button type='submit' className="btn btn-neutral mt-4">SignUp</button>
+                        <button
+                            type='button'
+                            onClick={handleGoogle}
+                            className="btn btn-outline mt-2"
+                        >
+                            <FaGoogle /> Continue with Google
+                        </button>
                         <p className='text-center font-semibold pt-5'>Dont’t Have An Account ? <Link className='text-secondary' to='/auth/login'>Login</Link></p>
                     </fieldset>
                 </form>
